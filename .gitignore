@@ -1,0 +1,8 @@
+# Build output
+build/
+
+# Local editor/tool settings
+.claude/
+
+# IDE settings
+.idea/

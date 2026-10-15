@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Brightness Control
+Comment=Monitor brightness control system tray application
+Exec=/home/server/Desktop/Bright/build/brightness-control
+Icon=video-display
+Terminal=false
+Categories=System;Utility;
+X-GNOME-Autostart-enabled=true
+X-MATE-Autostart-enabled=true
