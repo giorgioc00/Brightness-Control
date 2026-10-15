@@ -1,14 +1,28 @@
-# Brightness Control
+# Brightness Control - External Monitor Brightness for Linux
 
-A small GTK3 system tray app for adjusting external monitor brightness on Linux via [`ddcutil`](https://www.ddcutil.com/) (DDC/CI).
+**Change your external monitor's brightness on Linux from the system tray.** No more fiddling with the monitor's on-screen menu buttons.
+
+Brightness Control is a lightweight, open-source **GUI for [`ddcutil`](https://www.ddcutil.com/)**. It adjusts the real hardware backlight of desktop monitors over **DDC/CI**, not a software gamma overlay. It runs on **Ubuntu, Debian, Linux Mint, Pop!_OS, Fedora, Arch** and other distributions, with **GNOME, KDE Plasma, XFCE, MATE** and Cinnamon desktops.
+
+## Monitor compatibility
+
+Brightness Control works with **any external monitor that supports DDC/CI**, which includes most modern monitors from **BenQ, Dell, LG, Samsung, ASUS, Acer, AOC, Philips, ViewSonic, HP, Lenovo, MSI** and many others. It works over **HDMI, DisplayPort and USB-C/DisplayPort Alt Mode** connections, including multi-monitor setups.
+
+✅ **Tested on BenQ programming monitors** (BenQ's monitor series designed for coding).
+
+> Laptop built-in screens don't use DDC/CI. Use your desktop's normal brightness controls for those.
 
 ## Features
 
+- **Hardware brightness control** for external monitors via DDC/CI
 - **Slider control** with 21 steps (0–20), each step = 5% brightness
 - **System tray icon** showing the current level as a label
 - **Quick Set menu** in the tray for jumping straight to any level
-- **Display selection** - choose which monitor to control with `--display` or from the window
+- **Multi-monitor support** - choose which monitor to control with `--display` or from the window
 - **Hide to tray** - closing the window hides it instead of quitting
+- **Autostart at login** with the included `.desktop` file
+- **Lightweight** - a single small native C++/GTK3 binary, no Electron, no background services
+- **Free and open source** under the MIT license
 
 ## Requirements
 
@@ -116,6 +130,20 @@ To disable autostart, remove the file:
 ```bash
 rm ~/.config/autostart/brightness-control.desktop
 ```
+
+## FAQ
+
+**How do I change external monitor brightness on Linux?**
+Linux desktop environments usually only control laptop screens. External monitors are adjusted over DDC/CI, and Brightness Control gives you a tray icon and slider for that, so you don't need to run `ddcutil` commands by hand.
+
+**Does it work with my monitor?**
+If your monitor supports DDC/CI, almost certainly. Run `ddcutil detect`: if your monitor is listed, Brightness Control can control it. If not, check that DDC/CI is enabled in the monitor's on-screen menu.
+
+**Can I control two or more monitors?**
+Yes. Pick the monitor with the **Display** selector in the window, or choose the starting monitor with `--display N`.
+
+**Is this a software dimmer?**
+No. It changes the monitor's actual backlight, the same as pressing the buttons on the monitor.
 
 ## License
 
