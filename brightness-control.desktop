@@ -2,7 +2,7 @@
 Type=Application
 Name=Brightness Control
 Comment=Monitor brightness control system tray application
-Exec=/home/server/Desktop/Bright/build/brightness-control
+Exec=brightness-control
 Icon=video-display
 Terminal=false
 Categories=System;Utility;

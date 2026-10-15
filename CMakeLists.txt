@@ -21,3 +21,7 @@ add_executable(brightness-control brightness.cpp)
 target_link_libraries(brightness-control ${GTK_LIBRARIES} ${APPINDICATOR_LIBRARIES})
 target_include_directories(brightness-control PRIVATE ${GTK_INCLUDE_DIRS} ${APPINDICATOR_INCLUDE_DIRS})
 target_compile_options(brightness-control PRIVATE ${GTK_CFLAGS_OTHER} ${APPINDICATOR_CFLAGS_OTHER})
+
+include(GNUInstallDirs)
+install(TARGETS brightness-control RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(FILES brightness-control.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)

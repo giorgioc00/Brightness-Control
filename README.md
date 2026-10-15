@@ -52,13 +52,18 @@ Check that your monitor is detected:
 ddcutil detect
 ```
 
-## Build
+## Build and install
 
 ```bash
+git clone https://github.com/giorgioc00/Brightness-Control.git
+cd Brightness-Control
 mkdir build && cd build
 cmake ..
 make
+sudo make install
 ```
+
+This installs the `brightness-control` command to `/usr/local/bin` and adds **Brightness Control** to your applications menu. To try it without installing, skip `sudo make install` and run `./brightness-control` from the `build` folder.
 
 If CMake reports that `gtk+-3.0` was not found even though it is installed, point pkg-config at the system directory and try again:
 
@@ -69,9 +74,11 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 ## Run
 
 ```bash
-./build/brightness-control              # controls display 1
-./build/brightness-control --display 2  # controls display 2
+brightness-control              # controls display 1
+brightness-control --display 2  # controls display 2
 ```
+
+Or open **Brightness Control** from your applications menu.
 
 ### Command-line options
 
@@ -117,13 +124,14 @@ Rebuild after changing them.
 
 ## Autostart at login
 
-1. Edit `brightness-control.desktop` and set `Exec=` to the absolute path of your built binary. Add `--display N` at the end if you want a display other than 1.
-2. Copy it into your autostart directory:
+After `sudo make install`, copy the launcher into your autostart directory:
 
 ```bash
 mkdir -p ~/.config/autostart
-cp brightness-control.desktop ~/.config/autostart/
+cp /usr/local/share/applications/brightness-control.desktop ~/.config/autostart/
 ```
+
+To start with a display other than 1, edit the copied file and change the `Exec=` line to `Exec=brightness-control --display N`.
 
 To disable autostart, remove the file:
 
